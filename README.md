@@ -22,8 +22,8 @@ tool.
 - **Current weather card**: current temperature, feels-like, condition,
   high/low, wind speed + direction (rotating arrow), humidity, precipitation,
   an accurate client-side "last updated" timestamp with a manual refresh
-  button, and a "More details" button that opens the Statistics page for that
-  location.
+  button, automatic background refresh every 10 minutes, and a "More
+  details" button that opens the Statistics page for that location.
 - **Condition- and time-of-day-aware background** — the card's background
   photo is chosen from the weather category (clear/cloudy/rain/snow/
   thunderstorm/fog), day/night, and golden-hour proximity to sunrise/sunset.
@@ -268,7 +268,11 @@ conversion) are cheap enough to recompute on every render.
   fetches current + hourly + daily weather, exposes
   `{ data, status, error, lastUpdated, refresh }`. Unit toggles never
   trigger a refetch — the already-fetched Celsius/km-h/mm values are
-  converted client-side.
+  converted client-side. **Polls automatically every 10 minutes** via
+  `setInterval` inside the effect (cleaned up on unmount/coordinate change/
+  `AbortController.abort()`, so ticks never stack up or leak); `refresh()`
+  triggers an immediate manual refetch on top of that, for the card's
+  refresh button.
 - **`useAirQuality(latitude, longitude)`** — same lifecycle shape, for the
   air-quality endpoint.
 - **`useFavouritesWeather(favourites)`** — one batched request for
