@@ -1,0 +1,176 @@
+.sun-moon-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  height: 100%;
+  min-height: 26rem;
+  background-color: rgba(var(--surface-rgb), 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px var(--shadow);
+  padding: 1.75rem;
+  color: var(--text);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sun-moon-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 24px 60px var(--shadow);
+}
+
+.sun-moon-card__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sun-moon-card__arc {
+  width: 100%;
+  aspect-ratio: 200 / 100;
+  max-height: 11rem;
+  overflow: visible;
+}
+
+.sun-moon-card__arc-track {
+  fill: none;
+  stroke: var(--border);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1 7;
+}
+
+.sun-moon-card__arc-progress {
+  fill: none;
+  stroke: url(#sunMoonArcGradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+}
+
+.sun-moon-card__arc-dot {
+  fill: var(--accent);
+  stroke: var(--surface);
+  stroke-width: 2;
+}
+
+.sun-moon-card__arc-label-bg {
+  fill: var(--accent);
+}
+
+.sun-moon-card__arc-label-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 9.5px;
+  fill: #ffffff;
+}
+
+.sun-moon-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sun-moon-card__col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sun-moon-card__col--right {
+  align-items: flex-end;
+}
+
+.sun-moon-card__label {
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.sun-moon-card__value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.sun-moon-card__divider {
+  height: 1px;
+  background-color: var(--border);
+}
+
+.sun-moon-card__moon {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.sun-moon-card__moon-dark {
+  fill: var(--bg);
+}
+
+.sun-moon-card__moon-lit {
+  fill: var(--accent);
+}
+
+.sun-moon-card__moon-outline {
+  stroke: var(--border);
+  stroke-width: 1.5;
+}
+
+.sun-moon-card__moon-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.sun-moon-card__illumination {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: var(--secondary);
+  flex-shrink: 0;
+}
+
+/* Loading / error placeholder */
+.sun-moon-card--placeholder {
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.sun-moon-card__placeholder-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.sun-moon-card__spinner {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: sun-moon-card-spin 0.8s linear infinite;
+}
+
+@keyframes sun-moon-card-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .sun-moon-card {
+    padding: 1.25rem;
+    min-height: auto;
+  }
+}

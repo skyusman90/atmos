@@ -1,0 +1,200 @@
+.air-quality-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  width: 100%;
+  max-width: 60rem;
+  background-color: rgba(var(--surface-rgb), 0.55);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border);
+  border-radius: 1.5rem;
+  box-shadow: 0 20px 50px var(--shadow);
+  padding: 1.75rem;
+  color: var(--text);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.air-quality-card:hover {
+  border-color: var(--primary);
+  box-shadow: 0 24px 60px var(--shadow);
+}
+
+.air-quality-card__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.air-quality-card__title {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.air-quality-card__badge {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+}
+
+.air-quality-card__score-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.air-quality-card__score {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 2.75rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.air-quality-card__scale {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.air-quality-card__meter {
+  position: relative;
+  height: 0.6rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--secondary) 0%,
+    var(--secondary) 16.7%,
+    var(--accent) 16.7%,
+    var(--accent) 33.4%,
+    #f2994a 33.4%,
+    #f2994a 50%,
+    #eb5757 50%,
+    #eb5757 66.7%,
+    #9b51e0 66.7%,
+    #9b51e0 100%
+  );
+}
+
+.air-quality-card__meter-marker {
+  position: absolute;
+  top: 50%;
+  width: 1.05rem;
+  height: 1.05rem;
+  border-radius: 50%;
+  background-color: var(--surface);
+  border: 3px solid var(--text);
+  box-shadow: 0 2px 6px var(--shadow);
+  transform: translate(-50%, -50%);
+}
+
+.air-quality-card__meter-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.air-quality-card__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  list-style: none;
+}
+
+.air-quality-card__legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.air-quality-card__legend-swatch {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.air-quality-card__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1.25rem 1.5rem;
+  margin-top: 0.25rem;
+}
+
+.air-quality-card__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.air-quality-card__stat-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.air-quality-card__stat-label svg {
+  color: var(--accent);
+  font-size: 1rem;
+}
+
+.air-quality-card__stat-value {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+/* Loading / error placeholder */
+.air-quality-card--placeholder {
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  text-align: center;
+  color: var(--text-muted);
+  min-height: 10rem;
+}
+
+.air-quality-card__placeholder-text {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+}
+
+.air-quality-card__spinner {
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: air-quality-card-spin 0.8s linear infinite;
+}
+
+@keyframes air-quality-card-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .air-quality-card {
+    padding: 1.25rem;
+  }
+
+  .air-quality-card__score {
+    font-size: 2.25rem;
+  }
+}

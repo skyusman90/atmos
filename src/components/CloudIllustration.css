@@ -1,0 +1,52 @@
+.cloud-illustration {
+  overflow: visible;
+}
+
+.cloud-illustration__float {
+  animation: cloud-float 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.cloud-illustration__shadow {
+  animation: cloud-shadow 4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.cloud-illustration__sun {
+  animation: sun-pulse 3s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes cloud-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@keyframes cloud-shadow {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.35;
+  }
+}
+
+@keyframes sun-pulse {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
+  }
+}

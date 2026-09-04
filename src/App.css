@@ -1,0 +1,82 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app__body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.app__content {
+  flex: 1;
+  padding: 2rem 1.5rem;
+}
+
+.app__search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.weather-row {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.weather-row > .weather-card {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.weather-row > .sun-moon-card {
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 15rem;
+}
+
+.weather-row > .forecast-row {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.forecast-row > .hourly-card,
+.forecast-row > .air-quality-card {
+  min-width: 0;
+}
+
+.weather-row > .daily-card {
+  grid-column: 1 / -1;
+  grid-row: 3;
+}
+
+@media (max-width: 1100px) {
+  .weather-row {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .weather-row > .weather-card,
+  .weather-row > .sun-moon-card,
+  .weather-row > .forecast-row,
+  .weather-row > .daily-card {
+    grid-column: 1;
+    grid-row: auto;
+    width: 100%;
+  }
+
+  .weather-row > .forecast-row {
+    grid-template-columns: 1fr;
+  }
+}
